@@ -1,6 +1,6 @@
 # Cross Program Invocation (CPI)
 
-![cpi](./diagram.png)
+![CPI](./diagram.png)
 
 refers to action of one program invokes/calls the instructions of another program. Its like an api call to instructions of another program.
 
