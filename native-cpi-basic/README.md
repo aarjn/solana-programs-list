@@ -1,4 +1,4 @@
-# native-cpi-basic
+# NATIVE CPI BASIC
 
 
 ## Cross Program Invocations
