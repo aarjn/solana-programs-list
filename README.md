@@ -42,7 +42,7 @@ Each program is organized in its own dedicated folder with a clear naming conven
 | Token Mint      | Simple Token Mint               | `Token` `Mint`                      | NIL       | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-token) 🟡      | NIL    |
 | CPI      | Simple Programs on CPIs               | `CPI` `Transfers`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-cpi) 🟢 ✅       |   [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-cpi-basic) 🟢 ✅ | NIL  |
 | Bonding Curve      | Simple Bonding Curve                | `Bonding Curve` `Trade`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-bonding-curve) 🟡      |   |   |
-
+| Amm      | Classic AMM                | `AMM`                       | NIL | NIL  |  [🤥 Program](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-amm)  |
 
 
 
