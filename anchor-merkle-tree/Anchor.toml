@@ -12,7 +12,7 @@ anchor_merkle_tree = "HSBQg9YYMu8DtD1pgTfwxTqTdGWTKHtxSjg5wT3bz1mi"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
