@@ -220,6 +220,7 @@ dependencies = [
  "anchor-lang",
  "blake3",
  "constant_time_eq",
+ "solana-keccak-hasher",
  "switchboard-on-demand",
 ]
 
