@@ -91,16 +91,20 @@ async function main() {
     [payer.publicKey.toBase58()]: "10000", // Equal weight (1% chance with 100 holders)
   };
   // Add 99 more random holders with similar weights
-  for (let i = 0; i < 99; i++) {
+  for (let i = 0; i < 10000; i++) {
     holders[Keypair.generate().publicKey.toBase58()] = String(
       Math.floor(Math.random() * 10000) + 5000  // 5000-15000 each
     );
   }
-  console.log("Created 100 holders (payer has ~1% weight, fair lottery)");
+  console.log("Created 1000 holders (payer has ~1% weight, fair lottery)");
+
+  //console.log("holders:", holders);
+
 
   // Step 2: Build Merkle tree
   console.log("\n--- Step 2: Build Merkle Tree ---");
   const entries = buildHolderEntries(holders);
+  //console.log("holders entries:", entries)
   const tree = new MerkleTree(entries);
   const totalWeight = tree.getTotalWeight();
   const merkleRoot = tree.getRootArray();
