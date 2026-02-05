@@ -3,8 +3,6 @@
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
-    "lottery": "ts-node scripts/lottery-cli.ts",
-    "generate-holders": "ts-node scripts/generate-holders.ts",
     "close-lottery": "ts-node scripts/close-lottery.ts",
     "test-devnet": "ts-node scripts/test-devnet.ts"
   },
