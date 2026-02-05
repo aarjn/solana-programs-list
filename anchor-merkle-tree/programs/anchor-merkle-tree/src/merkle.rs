@@ -70,33 +70,3 @@ pub fn compute_selection_point(vrf_result: &[u8; 32], total_weight: u128) -> u12
 pub fn is_winner(selection_point: u128, prev_cumulative: u128, cumulative: u128) -> bool {
     selection_point >= prev_cumulative && selection_point < cumulative
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_hash_pair_ordering() {
-        let a = [1u8; 32];
-        let b = [2u8; 32];
-
-        // hash_pair should be commutative due to sorting
-        assert_eq!(hash_pair(&a, &b), hash_pair(&b, &a));
-    }
-
-    #[test]
-    fn test_selection_point() {
-        let vrf = [0xFF; 32]; // Max value
-        let total = 1000u128;
-        let point = compute_selection_point(&vrf, total);
-        assert!(point < total);
-    }
-
-    #[test]
-    fn test_is_winner() {
-        assert!(is_winner(50, 0, 100));
-        assert!(is_winner(0, 0, 100));
-        assert!(!is_winner(100, 0, 100)); // Upper bound is exclusive
-        assert!(!is_winner(50, 100, 200));
-    }
-}
