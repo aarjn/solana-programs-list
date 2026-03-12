@@ -4,3 +4,6 @@
 [submodule "pinocchio-vault"]
 	path = pinocchio-vault
 	url = https://github.com/4rjunc/pinocchio-vault
+[submodule "pinocchio-amm"]
+	path = pinocchio-amm
+	url = https://github.com/AvhiMaz/pinocchio-amm
