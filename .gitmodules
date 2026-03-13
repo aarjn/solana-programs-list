@@ -7,3 +7,6 @@
 [submodule "pinocchio-amm"]
 	path = pinocchio-amm
 	url = https://github.com/AvhiMaz/pinocchio-amm
+[submodule "anchor-lending-protocol"]
+	path = anchor-lending-protocol
+	url = https://github.com/AllenGeorge08/Meridian_Protocol
