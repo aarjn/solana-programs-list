@@ -10,3 +10,6 @@
 [submodule "anchor-lending-protocol"]
 	path = anchor-lending-protocol
 	url = https://github.com/AllenGeorge08/Meridian_Protocol
+[submodule "anchor-amm"]
+	path = anchor-amm
+	url = https://github.com/subhdotsol/AMM-Sandbox
