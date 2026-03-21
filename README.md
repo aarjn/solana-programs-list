@@ -25,7 +25,6 @@ Each program is organized in its own dedicated folder with a clear naming conven
 - 🏗️ Work in progress
 - ✅ Tests Available
 - ❌ No Tests
-- ⭐ Quasar Build
 
 | Program                                                                                     | Description                      | Features                                      | ⚓ Anchor Impl.                           | 🦀 Native Impl.       |🤥Pinocchio Impl. | ⭐ Quasar |
 |--------------------------------|--------------------------------|--------------------------------|--------------------------------|--------------------------------|--------------------------------|--------------------------------|
