@@ -1,0 +1,8 @@
+[project]
+name = "quasar_hello_world"
+
+[toolchain]
+type = "solana"
+
+[testing]
+framework = "quasarsvm-rust"

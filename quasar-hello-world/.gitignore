@@ -1,0 +1,17 @@
+# Build artifacts
+/target
+
+# Lock files
+Cargo.lock
+package-lock.json
+yarn.lock
+
+# Dependencies
+node_modules
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
