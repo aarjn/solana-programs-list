@@ -15,41 +15,68 @@ Each program is organized in its own dedicated folder with a clear naming conven
 - For native Solana programs: `native-[programname]`
 - For general notation of framework programs: `[framework]-[programname]`
 
-## Programs Included
+## Contents
 
-**Legend:**
+- [📚 Core Concepts](#-core-concepts)
+- [🏦 DeFi](#-defi)
+- [🖼️ NFTs & Tokens](#%EF%B8%8F-nfts--tokens)
+- [🌳 Data Structures](#-data-structures)
+- [🕹️ Games](#%EF%B8%8F-games)
+- [🔐 Privacy & Security](#-privacy--security)
 
-- 🟢 Completed
-- 🟡 In Progress / Half Done
-- 🔴 Planned
-- 🏗️ Work in progress
-- ✅ Tests Available
-- ❌ No Tests
+**Legend:** 🟢 Completed | 🟡 In Progress | 🔴 Planned | 🏗️ WIP | ✅ Tests | ❌ No Tests
 
-| Program                                                                                     | Description                      | Features                                      | ⚓ Anchor                            | 🦀 Native        |🤥Pinocchio  | ✨ Quasar (not stable) |
-|--------------------------------|--------------------------------|--------------------------------|--------------------------------|--------------------------------|--------------------------------|--------------------------------|
-| Hello World     | Hello World               | `Hello World`                      | NIL       |  NIL      | [🤥 Program](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-hello-world)  | [✨ Program](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-hello-world) |
-| Arcium Hello World     | Arcium confidential computing demo               | `Arcium` `Confidential Computing` `CPI`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-arcium-hello-world) 🟡 ❌       |  NIL      | NIL  | NIL |
-| Counterapp  | Simple counter app                | `PDA`                                         | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-counterapp) 🟢 ✅      | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-counter) 🟢 ❌    | [🤥 Program](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-counterapp)  🏗️    | [✨ Program](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-counter) 🟢 ✅ |
-| NFT Minting | Create & manage NFT collections  | `Metadata` `Metaplex` `Mint` `Transfer` `CPI` | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-nft-metaplex) 🟡       | NIL    | NIL    | NIL |
-| pNFT | Programmable NFT implementation  | `pNFT` `Metaplex` `Token Metadata` | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-p-nft) 🔴 ❌       | NIL    | NIL    | NIL |
-| Sol Vault   | Deposit and withdraw Sol         | `Deposit` `Withdraw` `PDA`                    | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-sol-vault) 🟢 ✅ & [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-vault-manager) 🟢 ✅ & [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-vault-blueshift) 🟢 ❌   | NIL    | [🤥 Program](https://github.com/4rjunc/pinocchio-vault/) & [🤥 Program](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-blueshift_vault) 🟢 ❌    | [✨ Program](https://github.com/Vinayapr23/quasar-vault/tree/b6696c3e6f6db4cbcce1875ce68179c879333531) 🟢 ✅ |
-| PDA Demo    | Simple program to demonstrate PDA | `PDA` `CRUD`                                         | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-pda) 🟢 ✅  & [⚓ CRUD Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-pda-crud) 🟢 ✅     | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-pda) 🟢 ❌ & [🦀 CRUD Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-pda-crud) 🟢 ✅    | NIL    | NIL |
-| Escrow      | Secure token swaps               | `Lock` `Release` `Cancel`                     | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-escrow) 🟢 ✅ & [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-escrow-blueshift) 🟢 ✅      | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-escrow) 🟢 ✅      | [🤥 Program](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-escrow) 🟡 ❌    | [✨ Program](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-escrow) 🟢❌ |
-| Multi Sign      | Signing tx multiple times               | `Signing` `Fullstack`                     | [⚓ Program](https://github.com/4rjunc/solana-dual-signing/) 🟢 ✅       | NIL      | NIL    | NIL |
-| Lending      | Lend token/assets               | `Tokens` `Locking` `Lend`                     | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-lending-protocol) 🏗️ ❌       | NIL      | NIL    | NIL |
-| Collateral Stablecoin      | Collateral-backed stablecoin protocol               | `Lending` `Collateral` `Oracle` `Liquidation` `Token2022`                     | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-collateral-stablecoin) 🟢 ✅       | NIL      | NIL    | NIL |
-| Stake      | Stake assets               | `Tokens` `Stake` `Reward`                     | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-staking) 🟡       | NIL      | NIL    | NIL |
-| Tic Tac Toe      | Tic Tac Toe               | `PDA` `Mini Game`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-tic-tac-toe) 🟡       | NIL      | NIL    | NIL |
-| SPL Token      | SPL token mint, transfer & accounts               | `SPL Token` `Mint` `Transfer` `ATA`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-spl-token) 🟢 ✅       | NIL      | NIL    | NIL |
-| Token Creation      | Create tokens with metadata               | `Token` `Mint` `Metaplex` `Metadata`                      | NIL       | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-create-token) 🟢 ✅      | NIL    | NIL |
-| CPI      | Simple Programs on CPIs               | `CPI` `Transfers`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-cpi) 🟢 ✅       |   [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-cpi-basic) 🟢 ✅ | NIL  | NIL |
-| Account Checks      | Account validation patterns               | `Account Validation` `Checks` `Educational`                      | NIL       | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-account-checks) 🟢 ✅      | NIL    | NIL |
-| Account Data      | Create & manage on-chain data records               | `Serialization` `Borsh` `Data Storage` `CPI`                      | NIL       | [🦀 Program](https://github.com/4rjunc/solana-programs-list/tree/main/native-account-data) 🟢 ✅      | NIL    | NIL |
-| Merkle Tree Lottery      | Merkle tree lottery with VRF randomness               | `Merkle Tree` `Lottery` `VRF` `Switchboard`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-merkle-tree) 🟢 ✅       | NIL      | NIL    | NIL |
-| Merkle Tree      | Incremental Merkle tree with insert & proof verification               | `Merkle Tree` `Hashing` `Proof Verification`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-merkle-tree-incremental) 🟢 ✅       | NIL      | NIL    | [✨ Program](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-merkle-tree) 🟢 ✅ |
-| Bonding Curve      | Simple Bonding Curve                | `Bonding Curve` `Trade`                      | [⚓ Program](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-bonding-curve) 🟡      |   |   | NIL |
-| Amm      | Classic AMM                | `AMM`                       | [⚓ Program](https://github.com/subhdotsol/AMM-Sandbox) | NIL  |  [🤥 Program](https://github.com/AvhiMaz/pinocchio-amm)  | NIL |
+## 📚 Core Concepts
+
+| Program | Description | ⚓ Anchor | 🦀 Native | 🤥 Pinocchio | ✨ Quasar |
+|---------|-------------|-----------|-----------|-------------|----------|
+| Hello World | Hello World | - | - | [🤥](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-hello-world) | [✨](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-hello-world) |
+| Counter | Simple counter app | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-counterapp) 🟢 ✅ | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-counter) 🟢 | [🤥](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-counterapp) 🏗️ | [✨](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-counter) 🟢 ✅ |
+| PDA Demo | Program Derived Addresses & CRUD | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-pda) 🟢 ✅ / [CRUD](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-pda-crud) 🟢 ✅ | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-pda) 🟢 / [CRUD](https://github.com/4rjunc/solana-programs-list/tree/main/native-pda-crud) 🟢 ✅ | - | - |
+| CPI | Cross-Program Invocations | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-cpi) 🟢 ✅ | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-cpi-basic) 🟢 ✅ | - | - |
+| Account Checks | Account validation patterns | - | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-account-checks) 🟢 ✅ | - | - |
+| Account Data | On-chain data records & serialization | - | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-account-data) 🟢 ✅ | - | - |
+
+## 🏦 DeFi
+
+| Program | Description | ⚓ Anchor | 🦀 Native | 🤥 Pinocchio | ✨ Quasar |
+|---------|-------------|-----------|-----------|-------------|----------|
+| Sol Vault | Deposit and withdraw SOL | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-sol-vault) 🟢 ✅ / [Manager](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-vault-manager) 🟢 ✅ / [Blueshift](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-vault-blueshift) 🟢 | - | [🤥](https://github.com/4rjunc/pinocchio-vault/) / [Blueshift](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-blueshift_vault) 🟢 | [✨](https://github.com/Vinayapr23/quasar-vault/tree/b6696c3e6f6db4cbcce1875ce68179c879333531) 🟢 ✅ |
+| Escrow | Secure token swaps | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-escrow) 🟢 ✅ / [Blueshift](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-escrow-blueshift) 🟢 ✅ | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-escrow) 🟢 ✅ | [🤥](https://github.com/4rjunc/solana-programs-list/tree/main/pinocchio-escrow) 🟡 | [✨](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-escrow) 🟢 |
+| AMM | Classic Automated Market Maker | [⚓](https://github.com/subhdotsol/AMM-Sandbox) 🟢 | - | [🤥](https://github.com/AvhiMaz/pinocchio-amm) | - |
+| Bonding Curve | Simple bonding curve | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-bonding-curve) 🟡 | - | - | - |
+| Lending | Lend token/assets | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-lending-protocol) 🏗️ | - | - | - |
+| Collateral Stablecoin | Collateral-backed stablecoin with oracle & liquidation | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-collateral-stablecoin) 🟢 ✅ | - | - | - |
+| Staking | Stake assets for rewards | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-staking) 🟡 | - | - | - |
+
+## 🖼️ NFTs & Tokens
+
+| Program | Description | ⚓ Anchor | 🦀 Native | 🤥 Pinocchio | ✨ Quasar |
+|---------|-------------|-----------|-----------|-------------|----------|
+| SPL Token | SPL token mint, transfer & accounts | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-spl-token) 🟢 ✅ | - | - | - |
+| Token Creation | Create tokens with metadata | - | [🦀](https://github.com/4rjunc/solana-programs-list/tree/main/native-create-token) 🟢 ✅ | - | - |
+| NFT Minting | Create & manage NFT collections | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-nft-metaplex) 🟡 | - | - | - |
+| pNFT | Programmable NFT implementation | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-p-nft) 🔴 | - | - | - |
+
+## 🌳 Data Structures
+
+| Program | Description | ⚓ Anchor | 🦀 Native | 🤥 Pinocchio | ✨ Quasar |
+|---------|-------------|-----------|-----------|-------------|----------|
+| Merkle Tree | Incremental Merkle tree with insert & proof verification | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-merkle-tree-incremental) 🟢 ✅ | - | - | [✨](https://github.com/4rjunc/solana-programs-list/tree/main/quasar-merkle-tree) 🟢 ✅ |
+| Merkle Tree Lottery | Merkle tree lottery with VRF randomness | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-merkle-tree) 🟢 ✅ | - | - | - |
+
+## 🕹️ Games
+
+| Program | Description | ⚓ Anchor | 🦀 Native | 🤥 Pinocchio | ✨ Quasar |
+|---------|-------------|-----------|-----------|-------------|----------|
+| Tic Tac Toe | On-chain Tic Tac Toe | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-tic-tac-toe) 🟡 | - | - | - |
+
+## 🔐 Privacy & Security
+
+| Program | Description | ⚓ Anchor | 🦀 Native | 🤥 Pinocchio | ✨ Quasar |
+|---------|-------------|-----------|-----------|-------------|----------|
+| Arcium Hello World | Arcium confidential computing demo | [⚓](https://github.com/4rjunc/solana-programs-list/tree/main/anchor-arcium-hello-world) 🟡 | - | - | - |
+| Multi Sign | Multi-signature transaction signing | [⚓](https://github.com/4rjunc/solana-dual-signing/) 🟢 ✅ | - | - | - |
 
 
 
