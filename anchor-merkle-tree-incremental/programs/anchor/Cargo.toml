@@ -1,0 +1,37 @@
+[package]
+name = "anchor"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "anchor"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build"]
+anchor-debug = []
+custom-heap = []
+custom-panic = []
+
+
+[dependencies]
+anchor-lang = "0.32.1"
+sha2-const-stable = "0.1.0"
+solana-sha256-hasher = { version = "3.1", features = ["sha2"] }
+
+
+[dev-dependencies]
+mollusk-svm = "0.10.3"
+solana-account = "3.4.0"
+solana-instruction = { version = "3.2.0", features = ["bincode"] }
+solana-pubkey = "4.1.0"
+solana-program-error = "3.0.0"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
