@@ -13,3 +13,6 @@
 [submodule "anchor-amm"]
 	path = anchor-amm
 	url = https://github.com/subhdotsol/AMM-Sandbox
+[submodule "quasar-vault"]
+	path = quasar-vault
+	url = https://github.com/Vinayapr23/quaser-vault.git
