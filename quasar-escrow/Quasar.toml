@@ -1,0 +1,8 @@
+[project]
+name = "quasar-escrow"
+
+[toolchain]
+type = "solana"
+
+[testing]
+framework = "quasarsvm-rust"
