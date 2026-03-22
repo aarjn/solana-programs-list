@@ -24,11 +24,10 @@ mod quasar_escrow {
         ctx.accounts.withdraw_tokens_and_close(&ctx.bumps)
     }
 
-    //#[instruction(discriminator = 2)]
-    //pub fn refund(ctx: Ctx<Refund>) -> Result<(), ProgramError> {
-    //    ctx.accounts.withdraw_tokens_and_close(&ctx.bumps)?;
-    //    ctx.accounts.emit_event()
-    //}
+    #[instruction(discriminator = 2)]
+    pub fn refund(ctx: Ctx<Refund>) -> Result<(), ProgramError> {
+        ctx.accounts.withdraw_tokens_and_close(&ctx.bumps)
+    }
 }
 
 #[cfg(test)]
