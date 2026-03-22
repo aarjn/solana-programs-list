@@ -1,0 +1,8 @@
+[project]
+name = "quasar-counter"
+
+[toolchain]
+type = "solana"
+
+[testing]
+framework = "quasarsvm-rust"
