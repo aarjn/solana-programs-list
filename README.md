@@ -12,7 +12,7 @@ Each program is organized in its own dedicated folder with a clear naming conven
 
 ## Program List
 
-The full program index lives in [programs.md](programs.md).
+The full program index lives in [PROGRAMS.md](PROGRAMS.md).
 
 ## Prerequisites
 
