@@ -23,6 +23,10 @@ We used **Surfpool** to manage our testing environment and handle RPC interactio
 To run the test suite locally:
 
 ```bash
+surfpool start
+```
+
+```bash
 anchor test
 ```
 
