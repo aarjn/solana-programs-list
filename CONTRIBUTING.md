@@ -48,7 +48,7 @@ We appreciate your interest in contributing to our Solana programs repository. T
   git submodule add https://github.com/user/my-vault.git anchor-vault
   ```
 
-4. Update the table in `README.md`.
+4. Update the program index in `PROGRAMS.md`.
 
 ### Code Quality
 
@@ -61,7 +61,8 @@ We appreciate your interest in contributing to our Solana programs repository. T
 
 ### Documentation
 
-- Update the main README.md if adding a new program
+- Update `PROGRAMS.md` if adding a new program
+- Update the main `README.md` if the top-level documentation also needs changes
 - Provide a brief description of your program's purpose
 - Include any blogs or documentations or videos you refered.
 
@@ -73,7 +74,8 @@ We appreciate your interest in contributing to our Solana programs repository. T
 - [ ] All tests pass
 - [ ] Code is well-documented
 - [ ] Followed naming conventions
-- [ ] Updated main README.md
+- [ ] Updated `PROGRAMS.md`
+- [ ] Updated main `README.md` when needed
 - [ ] Added program-specific README
 
 ## Pull Request Process
@@ -93,4 +95,4 @@ We appreciate your interest in contributing to our Solana programs repository. T
 
 If you have questions about contributing, please open an issue or contact the repository maintainers.
 
-**Happy Coding! 🚀**
+Thank you for contributing.
