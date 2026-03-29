@@ -41,7 +41,7 @@ Programs are separated into individual tables by category for easier browsing.
 | --- | --- | --- | --- |
 | NFT Minting | Create and manage NFT collections | [Anchor](anchor-nft-metaplex) | `Metadata` `Metaplex` `Mint` `Transfer` `CPI` |
 | pNFT | Programmable NFT implementation | [Anchor](anchor-p-nft) | `pNFT` `Metaplex` `Token Metadata` |
-| SPL Token | SPL token mint, transfer, and accounts | [Anchor](anchor-spl-token) | `SPL Token` `Mint` `Transfer` `ATA` |
+| SPL Token | SPL token mint, transfer, and accounts | [Anchor](anchor-spl-token), [Quasar](quasar-spl-token) | `SPL Token` `Mint` `Transfer` `ATA` |
 | Token Creation | Create tokens with metadata | [Native](native-create-token) | `Token` `Mint` `Metaplex` `Metadata` |
 
 ## Data Structures

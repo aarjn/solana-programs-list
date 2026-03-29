@@ -16,3 +16,6 @@
 [submodule "quasar-vault"]
 	path = quasar-vault
 	url = https://github.com/Vinayapr23/quaser-vault.git
+[submodule "quasar-spl-token-actions"]
+	path = quasar-spl-token
+	url = https://github.com/subhdotsol/quasar-spl-token
