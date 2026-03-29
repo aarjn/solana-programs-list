@@ -1,135 +1,188 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{
-    associated_token::AssociatedToken,
-    metadata::{
-        create_master_edition_v3,
-        create_metadata_accounts_v3, 
-        CreateMasterEditionV3, 
-        CreateMetadataAccountsV3, 
-        Metadata, 
-        MetadataAccount
-    },
-    token::{mint_to, Mint, MintTo, Token, TokenAccount},
-};
-use mpl_token_metadata::{
-    pda::{find_master_edition_account, find_metadata_account},
-    state::DataV2
+use mpl_core::{
+    ID as MPL_CORE_PROGRAM_ID,
+    instructions::{
+        CreateV2CpiBuilder, CreateCollectionV2CpiBuilder,
+        TransferV1CpiBuilder, UpdateV2CpiBuilder, BurnV1CpiBuilder,
+    }
 };
 
-declare_id!("3dLSEpfXxnhGV2TEUvps139xpBNNDw5u5dDfQeH9pvGz");
+declare_id!("4AgaC13ZKg8PhS2LU8C3EsxyrhHyvdcGJgvqiUTkdwwS");
 
 #[program]
 pub mod anchor_nft_metaplex {
-    use anchor_spl::metadata::mpl_token_metadata::types::Data;
-
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
+    pub fn create_collection(
+        ctx: Context<CreateCollection>,
+        args: CreateCollectionArgs,
+    ) -> Result<()> {
+        CreateCollectionV2CpiBuilder::new(&ctx.accounts.mpl_core_program.to_account_info())
+            .collection(&ctx.accounts.collection.to_account_info())
+            .payer(&ctx.accounts.payer.to_account_info())
+            .update_authority(Some(&ctx.accounts.update_authority.to_account_info()))
+            .system_program(&ctx.accounts.system_program.to_account_info())
+            .name(args.name)
+            .uri(args.uri)
+            .invoke()?;
         Ok(())
     }
 
-    pub fn init_nft(ctx: Context<InitNFT>, name: String, symbol: String, uri: String) -> Result<()>{
-        //creating a mint account
-        let cpi_context = CpiContext::new(
-            ctx.accounts.token_program.to_account_info(), 
-            MintTo {
-                mint: ctx.accounts.mint.to_account_info(),
-                to: ctx.accounts.associated_token_account.to_account_info(),
-                authority: ctx.accounts.signer.to_account_info()
-            },
-        );
-
-        mint_to(cpi_context,1)?;
-
-        // creating a metadata account
-        let cpi_context = CpiContext::new(
-            ctx.accounts.token_metadata_program.to_account_info(),
-            CreateMetadataAccountsV3{
-                metadata: ctx.accounts.metadata_account.to_account_info(),
-                mint: ctx.accounts.mint.to_account_info(),
-                update_authority: ctx.accounts.signer.to_account_info(),
-                mint_authority: ctx.accounts.signer.to_account_info(),
-                payer: ctx.accounts.signer.to_account_info(),
-                system_program: ctx.accounts.signer.to_account_info(),
-                rent: ctx.accounts.rent.to_account_info(),
-            }
-        );
-
-        let data_v2 = DataV2{
-            name,
-            symbol,
-            uri,
-            seller_fee_basis_points:0,
-            creators: None,
-            collection: None,
-            uses: None,
-        };
-
-        create_metadata_accounts_v3(cpi_context,data_v2, false, true, None)?;
-
-        // create master edition account
-        let cpi_context = CpiContext::new(
-            ctx.accounts.master_edition_account.to_account_info(), 
-            CreateMasterEditionV3{
-                edition: ctx.accounts.master_edition_account.to_account_info(),
-                mint: ctx.accounts.mint.to_account_info(),
-                update_authority: ctx.accounts.signer.to_account_info(),
-                mint_authority: ctx.accounts.signer.to_account_info(),
-                payer: ctx.accounts.signer.to_account_info(),
-                metadata: ctx.accounts.metadata_account.to_account_info(),
-                token_program: ctx.accounts.token_program.to_account_info(),
-                system_program: ctx.accounts.system_program.to_account_info(),
-                rent: ctx.accounts.rent.to_account_info(),
-            }
-        );
-
-        create_master_edition_v3(cpi_context, None)?;
-
+    pub fn create_asset(
+        ctx: Context<CreateAsset>,
+        args: CreateAssetArgs,
+    ) -> Result<()> {
+        CreateV2CpiBuilder::new(&ctx.accounts.mpl_core_program.to_account_info())
+            .asset(&ctx.accounts.asset.to_account_info())
+            .collection(Some(&ctx.accounts.collection.to_account_info()))
+            .authority(Some(&ctx.accounts.authority.to_account_info()))
+            .payer(&ctx.accounts.payer.to_account_info())
+            .owner(Some(&ctx.accounts.owner.to_account_info()))
+            .system_program(&ctx.accounts.system_program.to_account_info())
+            .name(args.name)
+            .uri(args.uri)
+            .invoke()?;
         Ok(())
     }
 
+    pub fn transfer_asset(ctx: Context<TransferAsset>) -> Result<()> {
+        TransferV1CpiBuilder::new(&ctx.accounts.mpl_core_program.to_account_info())
+            .asset(&ctx.accounts.asset.to_account_info())
+            .collection(Some(&ctx.accounts.collection.to_account_info()))
+            .payer(&ctx.accounts.payer.to_account_info())
+            .authority(Some(&ctx.accounts.authority.to_account_info()))
+            .new_owner(&ctx.accounts.new_owner.to_account_info())
+            .system_program(Some(&ctx.accounts.system_program.to_account_info()))
+            .invoke()?;
+        Ok(())
+    }
 
+    pub fn update_asset(
+        ctx: Context<UpdateAsset>,
+        args: UpdateAssetArgs,
+    ) -> Result<()> {
+        UpdateV2CpiBuilder::new(&ctx.accounts.mpl_core_program.to_account_info())
+            .asset(&ctx.accounts.asset.to_account_info())
+            .collection(Some(&ctx.accounts.collection.to_account_info()))
+            .payer(&ctx.accounts.payer.to_account_info())
+            .authority(Some(&ctx.accounts.authority.to_account_info()))
+            .system_program(&ctx.accounts.system_program.to_account_info())
+            .new_name(args.new_name)
+            .new_uri(args.new_uri)
+            .invoke()?;
+        Ok(())
+    }
+
+    pub fn burn_asset(ctx: Context<BurnAsset>) -> Result<()> {
+        BurnV1CpiBuilder::new(&ctx.accounts.mpl_core_program.to_account_info())
+            .asset(&ctx.accounts.asset.to_account_info())
+            .collection(Some(&ctx.accounts.collection.to_account_info()))
+            .payer(&ctx.accounts.payer.to_account_info())
+            .authority(Some(&ctx.accounts.authority.to_account_info()))
+            .system_program(Some(&ctx.accounts.system_program.to_account_info()))
+            .invoke()?;
+        Ok(())
+    }
+}
+
+#[derive(AnchorDeserialize, AnchorSerialize)]
+pub struct CreateCollectionArgs {
+    pub name: String,
+    pub uri: String,
+}
+
+#[derive(AnchorDeserialize, AnchorSerialize)]
+pub struct CreateAssetArgs {
+    pub name: String,
+    pub uri: String,
+}
+
+#[derive(AnchorDeserialize, AnchorSerialize)]
+pub struct UpdateAssetArgs {
+    pub new_name: String,
+    pub new_uri: String,
 }
 
 #[derive(Accounts)]
-pub struct Initialize {}
+pub struct CreateCollection<'info> {
+    #[account(mut)]
+    pub collection: Signer<'info>,
+    pub update_authority: Signer<'info>,
+    #[account(mut)]
+    pub payer: Signer<'info>,
+    pub system_program: Program<'info, System>,
+    #[account(address = MPL_CORE_PROGRAM_ID)]
+    /// CHECK: address constraint
+    pub mpl_core_program: UncheckedAccount<'info>,
+}
 
 #[derive(Accounts)]
-pub struct InitNFT<'info>{
-    /// CHECK: ok, we are passing in this account ourselves
-    #[account(mut, signer)]
-    signer: AccountInfo<'info>,
-    #[account(
-        init,
-        payer = signer,
-        mint::decimals = 0,
-        mint::authority = signer.key(),
-        mint::freeze_authority = signer.key()
-    )]
-    pub mint: Account<'info, Mint>,
-    #[account(
-        init_if_needed,
-        payer = signer,
-        associated_token::mint = mint,
-        associated_token::authority = signer,
-    )]
-    pub associated_token_account: Account<'info, TokenAccount>,
-    /// CHECK - address
-    #[account(
-        mut,
-        address=find_metadata_account(&mint.key()).0
-    )]
-    pub metadata_account: AccountInfo<'info>,
-    /// CHECK - address
-    #[account(
-        mut,
-        address=find_master_edition_account(&mint.key()).0
-    )]
-    pub master_edition_account: AccountInfo<'info>,
-    pub token_program: Program<'info, Token>,
-    pub associated_token_program: Program<'info, AssociatedToken>,
-    pub token_metadata_program: Program<'info, Metadata>,
+pub struct CreateAsset<'info> {
+    #[account(mut)]
+    pub asset: Signer<'info>,
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub collection: UncheckedAccount<'info>,
+    pub authority: Signer<'info>,
+    #[account(mut)]
+    pub payer: Signer<'info>,
+    /// CHECK: mpl_core validates
+    pub owner: UncheckedAccount<'info>,
     pub system_program: Program<'info, System>,
-    pub rent: Sysvar<'info, Rent>
+    #[account(address = MPL_CORE_PROGRAM_ID)]
+    /// CHECK: address constraint
+    pub mpl_core_program: UncheckedAccount<'info>,
+}
+
+#[derive(Accounts)]
+pub struct TransferAsset<'info> {
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub asset: UncheckedAccount<'info>,
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub collection: UncheckedAccount<'info>,
+    #[account(mut)]
+    pub payer: Signer<'info>,
+    pub authority: Signer<'info>,
+    /// CHECK: mpl_core validates
+    pub new_owner: UncheckedAccount<'info>,
+    pub system_program: Program<'info, System>,
+    #[account(address = MPL_CORE_PROGRAM_ID)]
+    /// CHECK: address constraint
+    pub mpl_core_program: UncheckedAccount<'info>,
+}
+
+#[derive(Accounts)]
+pub struct UpdateAsset<'info> {
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub asset: UncheckedAccount<'info>,
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub collection: UncheckedAccount<'info>,
+    #[account(mut)]
+    pub payer: Signer<'info>,
+    pub authority: Signer<'info>,
+    pub system_program: Program<'info, System>,
+    #[account(address = MPL_CORE_PROGRAM_ID)]
+    /// CHECK: address constraint
+    pub mpl_core_program: UncheckedAccount<'info>,
+}
+
+#[derive(Accounts)]
+pub struct BurnAsset<'info> {
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub asset: UncheckedAccount<'info>,
+    /// CHECK: mpl_core validates
+    #[account(mut)]
+    pub collection: UncheckedAccount<'info>,
+    #[account(mut)]
+    pub payer: Signer<'info>,
+    pub authority: Signer<'info>,
+    pub system_program: Program<'info, System>,
+    #[account(address = MPL_CORE_PROGRAM_ID)]
+    /// CHECK: address constraint
+    pub mpl_core_program: UncheckedAccount<'info>,
 }

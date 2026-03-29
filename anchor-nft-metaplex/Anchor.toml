@@ -5,14 +5,31 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-anchor_nft_metaplex = "3dLSEpfXxnhGV2TEUvps139xpBNNDw5u5dDfQeH9pvGz"
+anchor_nft_metaplex = "3KAporrbq4A9E6rhVRVcPTNsZbA6Xbu4rudauN8GE7CS"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "http://127.0.0.1:8899"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
+
+[test.validator]
+bind_address = "0.0.0.0"
+url = "https://api.devnet.solana.com"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
+
+[[test.validator.clone]]
+address = "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d"
+
+[[test.validator.clone]]
+address = "noopb9bkMVfRPU8AsbpTUg8AQkHtKwMYZiFUjNRtMmV"

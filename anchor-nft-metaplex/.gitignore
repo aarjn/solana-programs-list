@@ -5,3 +5,7 @@ target
 node_modules
 test-ledger
 .yarn
+runbooks
+.surfpool
+bun.lock
+txtx.yml
