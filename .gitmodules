@@ -19,3 +19,6 @@
 [submodule "quasar-spl-token-actions"]
 	path = quasar-spl-token
 	url = https://github.com/subhdotsol/quasar-spl-token
+[submodule "pinocchio-multisig"]
+	path = pinocchio-multisig
+	url = https://github.com/AvhiMaz/multisig

@@ -63,4 +63,5 @@ Programs are separated into individual tables by category for easier browsing.
 | --- | --- | --- | --- |
 | Arcium Hello World | Arcium confidential computing demo | [Anchor](anchor-arcium-hello-world) | `Arcium` `Confidential Computing` `CPI` |
 | Multi Sign | Signing transactions multiple times | - | `Signing` `Fullstack` |
+| Multisig | Multisig wallet where owners propose, vote, and execute once approvals reach the threshold | [Pinocchio](pinocchio-multisig) | `Multisig` `Proposals` `Voting` `Threshold` `Time Lock` |
 | Account Checks | Account validation patterns | [Native](native-account-checks) | `Account Validation` `Checks` `Educational` |
